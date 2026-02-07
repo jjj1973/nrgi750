@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { supabase } from "@/integrations/supabase/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
@@ -85,20 +86,18 @@ const SignupForm = () => {
     const rider = riders.find((r) => r.id === data.riderId);
 
     try {
-      const response = await fetch("/api/submit-lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      const { data: responseData, error } = await supabase.functions.invoke("submit-lead", {
+        body: {
           name: data.name,
           address: data.address,
           phone: data.phone,
           email: data.email,
           riderName: rider?.name ?? "Ukendt",
           consentTimestamp: new Date().toISOString(),
-        }),
+        },
       });
 
-      if (!response.ok) {
+      if (error) {
         throw new Error("Submission failed");
       }
 
