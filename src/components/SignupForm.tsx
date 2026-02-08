@@ -119,10 +119,9 @@ const SignupForm = () => {
       <section id="tilmelding" className="px-4 py-16 md:py-24">
         <div className="mx-auto max-w-lg text-center">
           <CheckCircle className="mx-auto mb-6 h-16 w-16 text-primary" />
-          <h2 className="mb-4 text-3xl text-foreground">Tak for din støtte!</h2>
+          <h2 className="mb-4 text-3xl text-foreground">Tak!</h2>
           <p className="text-lg leading-relaxed text-muted-foreground">
-            Din tilmelding er modtaget. NRGi kontakter dig hurtigst muligt – og
-            du har nu støttet kampen for en verden uden sclerose.
+            Vi har modtaget din tilmelding. NRGi kontakter dig hurtigst muligt.
           </p>
         </div>
       </section>
@@ -137,8 +136,8 @@ const SignupForm = () => {
             Tilmeld dig
           </h2>
           <p className="text-muted-foreground">
-            Det er gratis og uforpligtende at sige ja tak til et tilbud fra
-            NRGi.
+            Gratis og uforpligtende. NRGi's kundeservice kontakter dig – trygt
+            og i øjenhøjde.
           </p>
         </div>
 
@@ -220,11 +219,11 @@ const SignupForm = () => {
 
           {/* Rider selector */}
           <div className="space-y-2">
-            <Label>Vælg den rytter, du vil støtte</Label>
+            <Label>Vælg rytter (hvor støtten registreres)</Label>
             <RiderCombobox value={selectedRider} onChange={onRiderChange} />
             <p className="text-xs text-muted-foreground">
-              750 kr. går til den valgte rytters indsamling, hvis du bliver
-              NRGi-kunde.
+              Støtten går til kampen mod sclerose. Dit valg bestemmer, hvilken
+              rytters Cykelnerven-indsamling den registreres hos.
             </p>
             {errors.riderId && (
               <p className="text-sm text-destructive">
@@ -253,6 +252,9 @@ const SignupForm = () => {
                 e-mail med et energitilbud.
               </Label>
             </div>
+            <p className="mt-1 text-xs text-muted-foreground">
+              Vi kontakter dig kun om tilbuddet – og du kan altid sige nej tak.
+            </p>
             {errors.consent && (
               <p className="text-sm text-destructive">
                 {errors.consent.message}
@@ -271,13 +273,13 @@ const SignupForm = () => {
                 Sender...
               </>
             ) : (
-              "Send tilmelding"
+              "Send – støt kampen mod sclerose"
             )}
           </Button>
 
           <p className="text-center text-xs text-muted-foreground">
-            Dine oplysninger bruges kun til at kontakte dig og til at
-            registrere, hvilken rytter du ønsker at støtte.
+            Dine oplysninger bruges kun til at kontakte dig om tilbuddet og til
+            at registrere, hvilken rytters indsamling støtten registreres hos.
           </p>
         </form>
       </div>

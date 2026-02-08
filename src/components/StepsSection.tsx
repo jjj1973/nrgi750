@@ -4,18 +4,18 @@ const steps = [
   {
     icon: ClipboardList,
     title: "Skriv dig op",
-    description: "Det tager kun 30 sekunder at udfylde formularen.",
+    description: "Det tager ca. 30 sekunder.",
   },
   {
     icon: Users,
-    title: "Vælg en rytter",
-    description: "Vælg den rytter, du vil støtte i Cykelnerven.",
+    title: "Vælg rytter",
+    description: "Vælg hvilken rytters indsamling støtten skal registreres på.",
   },
   {
     icon: Heart,
     title: "750 kr. til kampen",
     description:
-      "Hvis du bliver kunde hos NRGi, går 750 kr. direkte til rytterens indsamling.",
+      "Når du bliver kunde hos NRGi, støtter NRGi kampen mod sclerose med 750 kr.",
   },
 ];
 

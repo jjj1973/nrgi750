@@ -22,10 +22,13 @@ const HeroSection = () => {
           Vi cykler for en verden uden sclerose
         </h1>
 
-        <p className="mx-auto mb-10 max-w-xl text-lg leading-relaxed text-primary-foreground/85 md:text-xl">
-          Når du siger ja tak til et energitilbud fra NRGi, støtter vi en rytter
-          i Cykelnerven med <strong className="text-accent">750 kr.</strong> til
-          kampen mod sclerose.
+        <p className="mx-auto mb-4 max-w-xl text-lg leading-relaxed text-primary-foreground/85 md:text-xl">
+          Når du siger ja tak til et energitilbud fra NRGi – og bliver kunde –
+          støtter NRGi kampen mod sclerose med <strong className="text-accent">750 kr.</strong>
+        </p>
+
+        <p className="mx-auto mb-10 max-w-xl text-base leading-relaxed text-primary-foreground/70">
+          Du vælger selv, hvilken Cykelnerven-rytter støtten skal registreres hos.
         </p>
 
         <Button
@@ -33,8 +36,12 @@ const HeroSection = () => {
           size="lg"
           className="bg-accent px-8 py-6 text-lg font-semibold text-accent-foreground shadow-lg transition-transform hover:scale-105 hover:bg-accent/90"
         >
-          Støt en rytter – bliv kontaktet af NRGi
+          Støt kampen mod sclerose
         </Button>
+
+        <p className="mt-4 text-sm text-primary-foreground/60">
+          Du får en venlig samtale – helt uden pres.
+        </p>
       </div>
     </section>
   );

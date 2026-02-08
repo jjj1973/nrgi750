@@ -7,8 +7,8 @@ const PurposeSection = () => {
         </h2>
         <p className="text-lg leading-relaxed text-muted-foreground md:text-xl">
           Cykelnerven er Scleroseforeningens indsats for en verden uden sclerose.
-          Alle penge går til forskning og støtte til mennesker, der lever med
-          sclerose i dag.
+          Pengene går til forskning og støtte til mennesker, der lever med
+          sclerose.
         </p>
       </div>
     </section>
