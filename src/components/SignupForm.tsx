@@ -16,27 +16,25 @@ const formSchema = z.object({
   name: z
     .string()
     .trim()
-    .min(2, "Navn skal være mindst 2 tegn")
+    .min(2, "Udfyld dit navn")
     .max(100, "Navn må højst være 100 tegn"),
   address: z
     .string()
     .trim()
-    .min(5, "Adresse skal være mindst 5 tegn")
+    .min(5, "Udfyld din adresse")
     .max(200, "Adresse må højst være 200 tegn"),
   phone: z
     .string()
     .trim()
-    .min(8, "Telefonnummer skal være mindst 8 cifre")
-    .max(20, "Telefonnummer må højst være 20 tegn")
-    .regex(/^[0-9+\-\s()]+$/, "Ugyldigt telefonnummer"),
+    .regex(/^[\d\s]{8,12}$/, "Indtast et gyldigt telefonnummer"),
   email: z
     .string()
     .trim()
-    .email("Ugyldig e-mailadresse")
+    .email("Indtast en gyldig e-mail")
     .max(255, "E-mail må højst være 255 tegn"),
-  riderId: z.string().min(1, "Vælg venligst en rytter"),
+  riderId: z.string().min(1, "Vælg en rytter"),
   consent: z.literal(true, {
-    errorMap: () => ({ message: "Du skal acceptere for at fortsætte" }),
+    errorMap: () => ({ message: "Du skal acceptere, at NRGi må kontakte dig" }),
   }),
   // Honeypot field – must be empty
   website: z.string().max(0).optional(),
@@ -54,9 +52,11 @@ const SignupForm = () => {
     register,
     handleSubmit,
     setValue,
-    formState: { errors },
+    watch,
+    formState: { errors, isValid },
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
+    mode: "onTouched",
     defaultValues: {
       name: "",
       address: "",
@@ -264,8 +264,8 @@ const SignupForm = () => {
 
           <Button
             type="submit"
-            disabled={submitting}
-            className="w-full bg-accent py-6 text-lg font-semibold text-accent-foreground shadow-md hover:bg-accent/90"
+            disabled={submitting || !isValid}
+            className="w-full bg-accent py-6 text-lg font-semibold text-accent-foreground shadow-md hover:bg-accent/90 disabled:opacity-50"
           >
             {submitting ? (
               <>
