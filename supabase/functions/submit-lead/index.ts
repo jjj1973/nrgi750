@@ -107,8 +107,10 @@ serve(async (req: Request) => {
 
     const resend = new Resend(RESEND_API_KEY);
 
+    const landingPageUrl = req.headers.get("origin") || "https://nrgi-cykelnerven.lovable.app";
+
     const emailHtml = `
-      <h2>Ny tilmelding – NRGi x Cykelnerven</h2>
+      <h2>TEST – Ny støtte til kampen mod sclerose – NRGi x Cykelnerven</h2>
       <table style="border-collapse: collapse; width: 100%; max-width: 500px;">
         <tr>
           <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Navn</td>
@@ -134,13 +136,17 @@ serve(async (req: Request) => {
           <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Samtykke</td>
           <td style="padding: 8px; border: 1px solid #ddd;">Ja – ${escapeHtml(consentTimestamp)}</td>
         </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">Landingsside</td>
+          <td style="padding: 8px; border: 1px solid #ddd;">${escapeHtml(landingPageUrl)}</td>
+        </tr>
       </table>
     `;
 
     const emailResponse = await resend.emails.send({
       from: "NRGi x Cykelnerven <noreply@resend.dev>",
-      to: ["cykelnerven@nrgi.dk"],
-      subject: `Ny støtte – NRGi x Cykelnerven – ${name.trim()}`,
+      to: ["jojpe@nrgi.dk"],
+      subject: `TEST – Ny støtte til kampen mod sclerose – NRGi x Cykelnerven – ${name.trim()}`,
       html: emailHtml,
     });
 
