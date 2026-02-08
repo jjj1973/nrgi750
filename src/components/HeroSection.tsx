@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
 import nrgiLogo from "@/assets/nrgi-logo.png";
+import partnerLogo from "@/assets/cykelnerven-logo.svg";
 
 const HeroSection = () => {
   const scrollToForm = () => {
@@ -9,15 +10,16 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden bg-primary px-4 py-20 md:py-32">
-      {/* Subtle decorative circle */}
-      <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-accent/10" />
-      <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-accent/5" />
-
-      {/* Header logo */}
-      <div className="relative mx-auto mb-10 max-w-3xl">
+      {/* Header logos – NRGi left, partner right */}
+      <div className="relative mx-auto mb-10 flex max-w-3xl items-center justify-between">
         <img
           src={nrgiLogo}
           alt="NRGi"
+          className="h-7 w-auto md:h-10"
+        />
+        <img
+          src={partnerLogo}
+          alt="Cykelnerven og Scleroseforeningen"
           className="h-7 w-auto md:h-10"
         />
       </div>
