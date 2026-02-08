@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Heart } from "lucide-react";
+import nrgiLogo from "@/assets/nrgi-logo.png";
 
 const HeroSection = () => {
   const scrollToForm = () => {
@@ -11,6 +12,15 @@ const HeroSection = () => {
       {/* Subtle decorative circle */}
       <div className="absolute -right-20 -top-20 h-80 w-80 rounded-full bg-accent/10" />
       <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-accent/5" />
+
+      {/* Header logo */}
+      <div className="relative mx-auto mb-10 max-w-3xl">
+        <img
+          src={nrgiLogo}
+          alt="NRGi"
+          className="h-7 w-auto md:h-10"
+        />
+      </div>
 
       <div className="relative mx-auto max-w-3xl text-center">
         <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary-foreground/10 px-4 py-2 text-sm text-primary-foreground/80">
