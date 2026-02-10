@@ -101,13 +101,34 @@ const SignupForm = () => {
         throw new Error("Submission failed");
       }
 
+      if (responseData?.missingKey) {
+        setSubmitted(true);
+        toast({
+          title: "Tilmelding modtaget",
+          description: "Bemærk: Testmail ikke sendt – RESEND_API_KEY mangler i secrets.",
+        });
+        return;
+      }
+
+      if (responseData?.emailSent === false) {
+        toast({
+          variant: "destructive",
+          title: "Der opstod en fejl ved afsendelse af testmail. Prøv igen.",
+          description: responseData?.error || "Ukendt fejl",
+        });
+        return;
+      }
+
       setSubmitted(true);
+      toast({
+        title: "Testmail sendt til jojpe@nrgi.dk",
+        description: "Tilmelding modtaget og email afsendt.",
+      });
     } catch {
       toast({
         variant: "destructive",
-        title: "Noget gik galt",
-        description:
-          "Vi kunne ikke sende din tilmelding. Prøv venligst igen.",
+        title: "Der opstod en fejl ved afsendelse af testmail. Prøv igen.",
+        description: "Vi kunne ikke sende din tilmelding. Prøv venligst igen.",
       });
     } finally {
       setSubmitting(false);

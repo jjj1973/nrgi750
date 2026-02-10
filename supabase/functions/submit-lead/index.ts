@@ -96,11 +96,14 @@ serve(async (req: Request) => {
     // Check for Resend API key
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
     if (!RESEND_API_KEY) {
-      console.error("RESEND_API_KEY is not configured");
-      // Still return success so the form works during development
-      console.log("Lead submission (email not sent - no API key):", JSON.stringify(body));
+      console.error("EMAIL_FAILED:", JSON.stringify({
+        reason: "RESEND_API_KEY is not configured",
+        recipient: "jojpe@nrgi.dk",
+        timestamp: new Date().toISOString(),
+        hint: "Add RESEND_API_KEY as a secret in Lovable Cloud settings",
+      }));
       return new Response(
-        JSON.stringify({ success: true, emailSent: false }),
+        JSON.stringify({ success: true, emailSent: false, missingKey: true }),
         { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
@@ -150,7 +153,23 @@ serve(async (req: Request) => {
       html: emailHtml,
     });
 
-    console.log("Email sent successfully:", emailResponse);
+    if (emailResponse.error) {
+      console.error("EMAIL_FAILED:", JSON.stringify({
+        recipient: "jojpe@nrgi.dk",
+        error: emailResponse.error,
+        timestamp: new Date().toISOString(),
+      }));
+      return new Response(
+        JSON.stringify({ success: false, emailSent: false, error: emailResponse.error.message }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    console.log("EMAIL_SENT:", JSON.stringify({
+      recipient: "jojpe@nrgi.dk",
+      id: emailResponse.data?.id,
+      timestamp: new Date().toISOString(),
+    }));
 
     return new Response(
       JSON.stringify({ success: true, emailSent: true }),
