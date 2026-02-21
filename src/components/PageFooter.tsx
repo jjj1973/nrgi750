@@ -25,6 +25,9 @@ const PageFooter = () => {
         <p className="mt-8 text-xs text-primary-foreground/40">
           © {new Date().getFullYear()} NRGi × Cykelnerven
         </p>
+        <p className="mt-2 text-xs text-primary-foreground/30 italic">
+          Prototype til inspiration – ikke aktiv tilmelding.
+        </p>
       </div>
     </footer>
   );
