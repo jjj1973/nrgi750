@@ -5,7 +5,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
+
 import RiderCombobox from "@/components/RiderCombobox";
 import { Info, Mail } from "lucide-react";
 import { riders } from "@/data/riders";
