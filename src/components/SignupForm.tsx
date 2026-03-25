@@ -157,9 +157,27 @@ ${data.name}`;
             Åbn mail – send tilmelding
           </Button>
 
-          <p className="text-center text-xs text-muted-foreground">
-            Dine oplysninger bruges kun til at udfylde mailen – intet gemmes.
-          </p>
+          {/* Privacy / transparency block */}
+          <div className="space-y-2 rounded-md border border-border bg-muted/50 p-4">
+            <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+              <ShieldCheck className="h-4 w-4 shrink-0 text-primary" />
+              Privatliv
+            </div>
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              NRGi bruger dine oplysninger til at kontakte dig med et NRGi-tilbud
+              og til at registrere, hvilken rytter støtten skal knyttes til. Siden
+              sender ikke data – når du trykker, åbner din mailapp med udfyldt
+              tekst, og du sender selv. Oplysningerne håndteres i mailboksen og
+              slettes/arkiveres efter gældende praksis.{" "}
+              <a
+                href="#"
+                className="underline text-primary hover:text-primary/80"
+              >
+                Privatlivspolitik
+              </a>
+              .
+            </p>
+          </div>
         </form>
       </div>
     </section>
