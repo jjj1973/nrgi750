@@ -16,9 +16,6 @@ const formSchema = z.object({
   phone: z.string().trim().regex(/^[\d\s]{8,12}$/, "Indtast et gyldigt mobilnummer"),
   email: z.string().trim().email("Indtast en gyldig e-mail").max(255, "E-mail må højst være 255 tegn"),
   riderId: z.string().min(1, "Vælg en rytter"),
-  consent: z.literal(true, {
-    errorMap: () => ({ message: "Du skal acceptere, at NRGi må kontakte dig, før du kan fortsætte." }),
-  }),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -41,7 +38,6 @@ const SignupForm = () => {
       phone: "",
       email: "",
       riderId: "",
-      consent: undefined,
     },
   });
 
@@ -56,6 +52,7 @@ const SignupForm = () => {
     const body = `Hej NRGi
 
 Jeg ønsker at blive kontaktet med et godt NRGi-tilbud på strøm.
+Jeg accepterer, at NRGi må kontakte mig pr. telefon og/eller e-mail med et NRGi-tilbud.
 
 Her er mine kontaktoplysninger:
 Navn: ${data.name}
@@ -130,27 +127,6 @@ ${data.name}`;
               rytters Cykelnerven-indsamling den registreres hos.
             </p>
             {errors.riderId && <p className="text-sm text-destructive">{errors.riderId.message}</p>}
-          </div>
-
-          {/* Consent */}
-          <div className="space-y-2">
-            <div className="flex items-start gap-3">
-              <Checkbox
-                id="consent"
-                onCheckedChange={(checked) =>
-                  setValue("consent", checked === true ? true : undefined as any, { shouldValidate: true })
-                }
-                className="mt-0.5"
-              />
-              <Label htmlFor="consent" className="text-sm font-normal leading-snug">
-                Jeg accepterer, at NRGi må kontakte mig pr. telefon og/eller
-                e-mail med et energitilbud.
-              </Label>
-            </div>
-            <p className="mt-1 text-xs text-muted-foreground">
-              Vi kontakter dig kun om tilbuddet – og du kan altid sige nej tak.
-            </p>
-            {errors.consent && <p className="text-sm text-destructive">{errors.consent.message}</p>}
           </div>
 
           {/* Info note */}
