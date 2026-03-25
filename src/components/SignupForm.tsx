@@ -10,11 +10,27 @@ import RiderCombobox from "@/components/RiderCombobox";
 import { Info, Mail } from "lucide-react";
 import { riders } from "@/data/riders";
 
+const normalizeDanishPhone = (raw: string): string => {
+  let s = raw.replace(/[\s\-]/g, "");
+  if (s.startsWith("+45")) s = s.slice(3);
+  else if (s.startsWith("0045")) s = s.slice(4);
+  return s;
+};
+
 const formSchema = z.object({
   name: z.string().trim().min(2, "Udfyld dit navn").max(100, "Navn må højst være 100 tegn"),
   address: z.string().trim().min(5, "Udfyld din adresse").max(200, "Adresse må højst være 200 tegn"),
-  phone: z.string().trim().regex(/^[\d\s]{8,12}$/, "Indtast et gyldigt mobilnummer"),
-  email: z.string().trim().email("Indtast en gyldig e-mail").max(255, "E-mail må højst være 255 tegn"),
+  phone: z.string().trim().refine(
+    (val) => /^\d{8}$/.test(normalizeDanishPhone(val)),
+    "Skriv et dansk mobilnummer (8 cifre). Du må gerne skrive +45 foran."
+  ),
+  email: z.string().trim()
+    .refine((val) => !val.includes(" "), "Skriv en gyldig e-mail (fx navn@firma.dk).")
+    .refine((val) => {
+      const parts = val.split("@");
+      return parts.length === 2 && parts[0].length > 0 && parts[1].includes(".") && !parts[1].endsWith(".");
+    }, "Skriv en gyldig e-mail (fx navn@firma.dk).")
+    .pipe(z.string().max(255, "E-mail må højst være 255 tegn")),
   riderId: z.string().min(1, "Vælg en rytter"),
 });
 
