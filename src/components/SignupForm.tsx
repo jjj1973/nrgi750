@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 import RiderCombobox from "@/components/RiderCombobox";
-import { Info, Mail } from "lucide-react";
+import { Info, Mail, ShieldCheck } from "lucide-react";
 import { riders } from "@/data/riders";
 
 const normalizeDanishPhone = (raw: string): string => {
