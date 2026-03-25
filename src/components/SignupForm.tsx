@@ -166,17 +166,17 @@ ${data.name}`;
             <p className="text-xs leading-relaxed text-muted-foreground">
               NRGi bruger dine oplysninger til at kontakte dig med et NRGi-tilbud
               og til at registrere, hvilken rytter støtten skal knyttes til. Siden
-              sender ikke data – når du trykker, åbner din mailapp med udfyldt
-              tekst, og du sender selv. Oplysningerne håndteres i mailboksen og
-              slettes/arkiveres efter gældende praksis.{" "}
-              <a
-                href="#"
-                className="underline text-primary hover:text-primary/80"
-              >
-                Privatlivspolitik
-              </a>
-              .
+              sender ikke data – du sender selv en e-mail. Oplysningerne
+              håndteres i mailboksen og slettes/arkiveres efter gældende praksis.
             </p>
+            <a
+              href="https://nrgi.dk/privat/vilkaar-data-og-privatliv/persondatabehandling/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block text-xs underline text-primary hover:text-primary/80"
+            >
+              Privatlivspolitik
+            </a>
           </div>
         </form>
       </div>
