@@ -63,8 +63,6 @@ E-mail: ${data.email}
 Jeg ønsker at følgende rytter får de 750 kr. registreret på sin indsamling:
 ${riderName}
 
-Vi tales eller skrives ved.
-
 Med venlig hilsen
 ${data.name}`;
 
