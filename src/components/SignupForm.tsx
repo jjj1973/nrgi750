@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 import RiderCombobox from "@/components/RiderCombobox";
-import { Info, Mail } from "lucide-react";
+import { Info, Mail, ShieldCheck } from "lucide-react";
 import { riders } from "@/data/riders";
 
 const normalizeDanishPhone = (raw: string): string => {
@@ -68,7 +68,6 @@ const SignupForm = () => {
     const body = `Hej NRGi
 
 Jeg ønsker at blive kontaktet med et godt NRGi-tilbud på strøm.
-Jeg accepterer, at NRGi må kontakte mig pr. telefon og/eller e-mail med et NRGi-tilbud.
 
 Her er mine kontaktoplysninger:
 Navn: ${data.name}
@@ -82,7 +81,7 @@ ${riderName}
 Med venlig hilsen
 ${data.name}`;
 
-    const subject = "Tilmelding – Cykelnerven x NRGi";
+    const subject = "Tilmelding – Cykelnerven x NRGi (750 kr.)";
     const mailto = `mailto:cykelnerven@nrgi.dk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
   };
@@ -158,9 +157,27 @@ ${data.name}`;
             Åbn mail – send tilmelding
           </Button>
 
-          <p className="text-center text-xs text-muted-foreground">
-            Dine oplysninger bruges kun til at udfylde mailen – intet gemmes.
-          </p>
+          {/* Privacy / transparency block */}
+          <div className="space-y-2 rounded-md border border-border bg-muted/50 p-4">
+            <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+              <ShieldCheck className="h-4 w-4 shrink-0 text-primary" />
+              Privatliv
+            </div>
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              NRGi bruger dine oplysninger til at kontakte dig med et NRGi-tilbud
+              og til at registrere, hvilken rytter støtten skal knyttes til. Siden
+              sender ikke data – når du trykker, åbner din mailapp med udfyldt
+              tekst, og du sender selv. Oplysningerne håndteres i mailboksen og
+              slettes/arkiveres efter gældende praksis.{" "}
+              <a
+                href="#"
+                className="underline text-primary hover:text-primary/80"
+              >
+                Privatlivspolitik
+              </a>
+              .
+            </p>
+          </div>
         </form>
       </div>
     </section>
