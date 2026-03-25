@@ -68,7 +68,6 @@ const SignupForm = () => {
     const body = `Hej NRGi
 
 Jeg ønsker at blive kontaktet med et godt NRGi-tilbud på strøm.
-Jeg accepterer, at NRGi må kontakte mig pr. telefon og/eller e-mail med et NRGi-tilbud.
 
 Her er mine kontaktoplysninger:
 Navn: ${data.name}
@@ -82,7 +81,7 @@ ${riderName}
 Med venlig hilsen
 ${data.name}`;
 
-    const subject = "Tilmelding – Cykelnerven x NRGi";
+    const subject = "Tilmelding – Cykelnerven x NRGi (750 kr.)";
     const mailto = `mailto:cykelnerven@nrgi.dk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     window.location.href = mailto;
   };
